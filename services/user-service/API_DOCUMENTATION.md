@@ -13,45 +13,46 @@ Authentication is handled via JWT tokens (Access and Refresh tokens).
 
 ### Endpoints
 
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/auth/login` | Login with email and password | No |
-| `POST` | `/auth/refresh` | Refresh access token | No |
-| `POST` | `/auth/password/reset-request` | Request password reset email | No |
-| `POST` | `/auth/password/reset` | Reset password with token | No |
-| `POST` | `/auth/logout` | Logout (revoke session) | Yes |
-| `POST` | `/auth/password/change` | Change password | Yes |
-| `GET` | `/auth/sessions` | List active sessions | Yes |
-| `DELETE` | `/auth/sessions` | Revoke all sessions | Yes |
-| `DELETE` | `/auth/sessions/{sessionId}` | Revoke specific session | Yes |
+| Method   | Endpoint                       | Description                   | Auth Required |
+| :------- | :----------------------------- | :---------------------------- | :------------ |
+| `POST`   | `/auth/login`                  | Login with email and password | No            |
+| `POST`   | `/auth/refresh`                | Refresh access token          | No            |
+| `POST`   | `/auth/password/reset-request` | Request password reset email  | No            |
+| `POST`   | `/auth/password/reset`         | Reset password with token     | No            |
+| `POST`   | `/auth/logout`                 | Logout (revoke session)       | Yes           |
+| `POST`   | `/auth/password/change`        | Change password               | Yes           |
+| `GET`    | `/auth/sessions`               | List active sessions          | Yes           |
+| `DELETE` | `/auth/sessions`               | Revoke all sessions           | Yes           |
+| `DELETE` | `/auth/sessions/{sessionId}`   | Revoke specific session       | Yes           |
 
 ## User Management (Self-Service)
 
 Endpoints for users to manage their own profile.
 
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/users/me` | Get current user profile | Yes |
-| `PUT` | `/users/me` | Update current user profile | Yes |
+| Method | Endpoint    | Description                 | Auth Required |
+| :----- | :---------- | :-------------------------- | :------------ |
+| `GET`  | `/users/me` | Get current user profile    | Yes           |
+| `PUT`  | `/users/me` | Update current user profile | Yes           |
 
 ## Admin Management
 
 Endpoints for administrators to manage users. Requires `admin` or `faculty` role.
 
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/admin/users` | Create new user | Yes (Admin) |
-| `GET` | `/admin/users` | List users (paginated) | Yes (Admin) |
-| `GET` | `/admin/users/{id}` | Get user by ID | Yes (Admin) |
-| `PUT` | `/admin/users/{id}` | Update user details | Yes (Admin) |
-| `DELETE` | `/admin/users/{id}` | Delete user | Yes (Admin) |
-| `POST` | `/admin/users/{id}/activate` | Activate user | Yes (Admin) |
-| `POST` | `/admin/users/{id}/suspend` | Suspend user | Yes (Admin) |
-| `POST` | `/admin/users/bulk-import` | Bulk import users | Yes (Admin) |
+| Method   | Endpoint                     | Description            | Auth Required |
+| :------- | :--------------------------- | :--------------------- | :------------ |
+| `POST`   | `/admin/users`               | Create new user        | Yes (Admin)   |
+| `GET`    | `/admin/users`               | List users (paginated) | Yes (Admin)   |
+| `GET`    | `/admin/users/{id}`          | Get user by ID         | Yes (Admin)   |
+| `PUT`    | `/admin/users/{id}`          | Update user details    | Yes (Admin)   |
+| `DELETE` | `/admin/users/{id}`          | Delete user            | Yes (Admin)   |
+| `POST`   | `/admin/users/{id}/activate` | Activate user          | Yes (Admin)   |
+| `POST`   | `/admin/users/{id}/suspend`  | Suspend user           | Yes (Admin)   |
+| `POST`   | `/admin/users/bulk-import`   | Bulk import users      | Yes (Admin)   |
 
 ## Data Models
 
 ### Login Request
+
 ```json
 {
   "email": "user@example.com",
@@ -60,6 +61,7 @@ Endpoints for administrators to manage users. Requires `admin` or `faculty` role
 ```
 
 ### Login Response
+
 ```json
 {
   "success": true,
@@ -77,6 +79,7 @@ Endpoints for administrators to manage users. Requires `admin` or `faculty` role
 ## Error Handling
 
 Standard error response format:
+
 ```json
 {
   "success": false,
